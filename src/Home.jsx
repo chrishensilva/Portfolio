@@ -1,5 +1,5 @@
 
-import myimage from './assets/mypng.png';
+import myimage from './assets/myneww.png';
 import Card from './Card.jsx';
 import Social from './Social.jsx';
 import Projects from './Projects.jsx';

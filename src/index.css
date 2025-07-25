@@ -1,16 +1,14 @@
-html
-{
+html, body {
+    margin: 0;
+    padding-top: 3%;
+    box-sizing: border-box;
     scroll-behavior: smooth;
     color: white;
-    font-family: 'poppins','sans-serif';
-    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: rgba(0, 0, 0, 0.970);
+    overflow-x: hidden; /* Important fix */
 }
 
-.body
-{
-    background-color: rgba(0, 0, 0, 0.970);
-    padding-top: 60px;
-}
 
 .navigation
 {
@@ -278,13 +276,13 @@ p
 
 .foot
 {
-    background-color: antiquewhite;
+    background-color: rgba(0, 0, 0, 0.50);
     height: auto;
     padding: 10px;
     font-family:Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     letter-spacing: 1rem;
-    color: black;
+    color: rgb(117, 116, 116);
 }
 .softwares
 {
@@ -614,4 +612,112 @@ p
 .txt
 {
     color: white;
+}
+
+
+
+@media (max-width: 768px) {
+  html, body {
+    padding-top: 10%;
+  }
+
+  .navigation {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .links {
+    margin: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .head {
+    flex-direction: column;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .rightimg {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .btn1, .btn2 {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .bar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+  }
+
+  .boxset {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+  }
+
+  .cards {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .softwares {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .projectcard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .projimg {
+    width: 100%;
+  }
+
+  .projecttype {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .socialcontainer {
+    flex-direction: column;
+  }
+
+  .con {
+    flex-direction: column;
+  }
+
+  .fbcard, .linkedincard, .instercard, .gitcard {
+    width: 90%;
+  }
+
+  .home-img .img-box {
+    width: 80vw;
+    height: 80vw;
+  }
+
+  .home-img {
+    margin-right: 0;
+    margin-top: 2rem;
+  }
+
+  .graphiccards-container {
+    grid-template-columns: 1fr;
+  }
+
+  .myself {
+    width: 95%;
+    padding: 0 1rem;
+  }
 }

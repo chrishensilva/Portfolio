@@ -1,6 +1,6 @@
 {
   "name": "card-project",
-  "homepage": "https://github.com/chrishensilva/Portfolio",
+  "homepage": "https://chrishensilva.github.io/Portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "preview": "vite preview"
   },
   "dependencies": {

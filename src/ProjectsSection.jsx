@@ -167,11 +167,25 @@ function ProjectsSection() {
                 prodesc: 'This UI design showcases a clean and minimalistic login interface tailored for modern web and mobile platforms. The layout uses soft gradients, smooth shadows, and rounded input fields to create a welcoming and professional aesthetic.',
             },
         ],
+         'Web Development': [
+            {
+                proimage: v1,
+                proHead: 'Explainer Videos',
+                prodesc: 'Smooth cuts with AE and Premiere',
+                prolink: 'https://drive.google.com/drive/folders/15cCm8yoov-JmGNDN6qR4s79te-quFw1m?usp=sharing',
+            },
+            {
+                proimage: v2,
+                proHead: 'Animated Music Videos',
+                prodesc: 'Color graded and synced to beat',
+                prolink: 'https://www.youtube.com/@Chrishensilva',
+            },
+        ],
     };
 
     return (
         <div className="project">
-            <div className="projecttype">
+            <div className="projecttype" data-aos="fade">
                 {Object.keys(projectData).map((category) => (
                     <button
                         key={category}
@@ -183,7 +197,7 @@ function ProjectsSection() {
                 ))}
             </div>
 
-            <div
+            <div data-aos="slide-left"
     className={
         activeCategory === 'Graphic Designing'
             ? 'graphiccards-container'

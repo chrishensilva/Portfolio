@@ -85,6 +85,10 @@ a{
     gap: 1rem;
     margin-top: 2rem;
 }
+.iconn
+{
+    width: 50px;
+}
 .social .icon
 {
     /*padding-right: 20px;*/
@@ -131,6 +135,7 @@ p
     align-items: center;
     text-align: center;
     color: white;
+    font-size: 3rem;
 }
 .buttons
 {
@@ -245,6 +250,7 @@ p
     gap: 50px;
     align-items: center;
     justify-content: center;
+    margin-bottom: -5%;
 }
 .cardbox:hover
 {
@@ -276,13 +282,13 @@ p
 
 .foot
 {
-    background-color: rgba(0, 0, 0, 0.50);
+    background-color: rgb(255, 255, 255);
     height: auto;
     padding: 10px;
     font-family:Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     letter-spacing: 1rem;
-    color: rgb(117, 116, 116);
+    color: rgb(0, 0, 0);
 }
 .softwares
 {
@@ -321,6 +327,7 @@ p
 }
 .context
 {
+    font-size: 3rem;
     margin-top: -2%;
     text-align: center;
 }
@@ -343,9 +350,13 @@ p
     background-color: rgb(140, 19, 19);
     width: 300px;
 }
+.follow
+{
+    text-align: center;
+    margin-top: 3%;
+}
 .con
 {
-    margin-left: 3%;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -354,7 +365,7 @@ p
 .fbcard
 {
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.397);
+    
     height: 30%;
     width: 200px;
     padding: 10px;
@@ -365,7 +376,7 @@ p
 {
     border-radius: 10px;
     margin: 2%;
-    background-color: rgba(255, 255, 255, 0.397);
+    
     height: 30%;
     width: 200px;
     padding: 10px;
@@ -375,7 +386,7 @@ p
 {
     border-radius: 10px;
     margin: 2%;
-    background-color: rgba(255, 255, 255, 0.397);
+    
     height: 30%;
     width: 200px;
     padding: 10px;
@@ -385,11 +396,15 @@ p
 {
     border-radius: 10px;
     margin: 2%;
-    background-color: rgba(255, 255, 255, 0.397);
-    height: 30%;
+    height: 3%;
     width: 200px;
     padding: 10px;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 0.3);
+}
+.gitcard img
+{
+    width: 50px;
+    filter:invert(100%);
 }
 .fbcard:hover
 {
@@ -408,11 +423,12 @@ p
 }
 .gitcard:hover
 {
-    box-shadow: 0 5px 10px greenyellow;
+    box-shadow: 0 5px 10px #adff2f;
     transform: translateY(-5px);
 }
 .projHead
 {
+    font-size: 3rem;
     text-align: center;
     padding-bottom: 2%;
 }
@@ -548,7 +564,16 @@ p
         transform: rotate(360deg);
     }
 }
-
+.home-img .img-box .img-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    z-index: 2; 
+}
 .home-img .img-box .img-item
 {
     position: relative;
@@ -566,14 +591,12 @@ p
 
 
 
-
 .home-img .img-box .img-item img
 {
-    
     position: absolute;
-    top: 30px;
+    top: 1px;
     display: block;
-    width: 95%;
+    width: 100%;
     object-fit: cover;
     mix-blend-mode: lighten;
 }
@@ -609,9 +632,10 @@ p
 {
     margin-right: 10%;
 }
-.txt
+
+.con p
 {
-    color: white;
+    color: #ffffff;
 }
 
 

@@ -43,9 +43,9 @@ function Home()
             <div className='head' data-aos="fade">
                 <div className='textcontent'>
                     <div className='title'>
-                        <p>Hello,I`m</p>
+                        {/*<p>Hello,I`m</p>*/}
                     </div>
-                    <h1 className='myname'>Chrishen <br></br>Silva</h1>
+                    <h1 className='myname'>Hi I`m Chrishen Silva</h1>
                     <div className='home-info'>
                         {/*<p>I`m a</p> <h2>Ui/Ux Designer | Web Developer | Editor | Creator 
                         </h2>*/}

@@ -1,15 +1,12 @@
-function Card(props)
-{
-    return(
-        <>
-        <div className="boxset" data-aos="fade-up">
-            <div className="cardbox">
-                <img className="cardimg" src={props.image}></img>
-                <h3 className="cardheading">{props.heading}</h3>
-                <p className="carddesc">{props.desc}</p>
+function Card(props) {
+    return (
+        <div className="card" data-aos="fade-up">
+            <div className="card-icon">
+                <img src={props.image} alt={props.heading} />
             </div>
+            <h3>{props.heading}</h3>
+            <p>{props.desc}</p>
         </div>
-        </>
     );
 }
-export default Card
+export default Card;

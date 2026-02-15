@@ -182,11 +182,11 @@ function ProjectsSection() {
 
   return (
     <div className="project">
-      <div className="projecttype" data-aos="fade">
+      <div className="projects-filter" data-aos="fade-up">
         {Object.keys(projectData).map((category) => (
           <button
             key={category}
-            className="projecttypesbtn"
+            className={`filter-btn ${activeCategory === category ? "active" : ""}`}
             onClick={() => setActiveCategory(category)}
           >
             {category}
@@ -195,29 +195,21 @@ function ProjectsSection() {
       </div>
 
       <div
-        data-aos="slide-left"
-        className={
-          activeCategory === "Graphic Designing"
-            ? "graphiccards-container"
-            : "projectcards"
-        }
+        className="projects-grid"
         key={activeCategory}
       >
         {projectData[activeCategory].map((item, index) => (
           <motion.div
-            key={item.proHead + index}
-            initial={{ opacity: 0, y: 40 }}
+            key={(item.proHead || "project") + index}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
           >
             <Projects
               proimage={item.proimage}
               proHead={item.proHead}
               prodesc={item.prodesc}
               prolink={item.prolink}
-              cardType={
-                activeCategory === "Graphic Designing" ? "graphic" : "default"
-              }
             />
           </motion.div>
         ))}

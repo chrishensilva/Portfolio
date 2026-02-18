@@ -195,7 +195,7 @@ function ProjectsSection() {
       </div>
 
       <div
-        className="projects-grid"
+        className={`projects-grid ${activeCategory === "Graphic Designing" ? "graphics-layout" : ""}`}
         key={activeCategory}
       >
         {projectData[activeCategory].map((item, index) => (

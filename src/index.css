@@ -509,6 +509,21 @@ ul {
   gap: 2rem;
 }
 
+/* Custom layout for Graphic Designing section */
+.graphics-layout {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.graphics-layout .project-card {
+  aspect-ratio: 1 / 1;
+}
+
+.graphics-layout .project-img-wrapper {
+  height: 100%;
+}
+
+
 .project-card {
   background: var(--color-bg-secondary);
   border-radius: 16px;

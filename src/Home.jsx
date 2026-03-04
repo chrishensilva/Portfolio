@@ -1,180 +1,260 @@
+import React, { useEffect, useState } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ArrowRight, Download, Github, Linkedin, Instagram, ArrowUp, Send } from 'lucide-react';
 
 import myimage from './assets/new.jpg';
-import Card from './Card.jsx';
+import Navbar from './Navbar.jsx';
 import ProjectsSection from './ProjectsSection.jsx';
+import Expertise from './Expertise.jsx';
+import Testimonials from './Testimonials.jsx';
 
-import pic1 from './assets/a.png';
-import pic2 from './assets/b.png';
-import pic3 from './assets/c.png';
 
-// Social Logos
-import fb from './assets/logo/fb.png';
-import inster from './assets/logo/inster.png';
-import linked from './assets/logo/in.png';
-import git from './assets/logo/git.png';
+gsap.registerPlugin(ScrollTrigger);
+
+
 
 
 function Home() {
+    const [showScrollTop, setShowScrollTop] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setShowScrollTop(window.scrollY > 400);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Hero Entrance
+            const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
+            tl.from('.hero-title-line', {
+                y: 100,
+                opacity: 0,
+                duration: 1.2,
+                stagger: 0.1
+            })
+                .from('.hero-tagline', {
+                    y: 20,
+                    opacity: 0,
+                    duration: 1
+                }, '-=0.8')
+                .from('.hero-cta-group', {
+                    y: 20,
+                    opacity: 0,
+                    duration: 1
+                }, '-=0.8')
+                .from('.hero-image-container', {
+                    scale: 1.1,
+                    opacity: 0,
+                    duration: 1.5
+                }, '-=1.2');
+
+            // Section Reveals
+            const sections = ['#about', '#expertise', '#projects', '#testimonials', '#contact'];
+
+            sections.forEach((selector) => {
+                gsap.from(selector, {
+                    scrollTrigger: {
+                        trigger: selector,
+                        start: 'top 80%',
+                        toggleActions: 'play none none none'
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    ease: 'power3.out'
+                });
+            });
+
+            // Magnetic Buttons
+            const magneticElements = document.querySelectorAll('.btn-primary, .btn-secondary, .social-item-v2, .filter-tab');
+
+            magneticElements.forEach((el) => {
+                const onMouseMove = (e) => {
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+
+                    gsap.to(el, {
+                        x: x * 0.3,
+                        y: y * 0.3,
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                };
+
+                const onMouseLeave = () => {
+                    gsap.to(el, {
+                        x: 0,
+                        y: 0,
+                        duration: 0.5,
+                        ease: 'elastic.out(1, 0.3)'
+                    });
+                };
+
+                el.addEventListener('mousemove', onMouseMove);
+                el.addEventListener('mouseleave', onMouseLeave);
+            });
+        });
+
+        return () => ctx.revert();
+    }, []);
 
     return (
         <div className="app-wrapper">
-            {/* Navigation */}
-            <nav className="navigation">
-                <div className="nav-container">
-                    <div className="logo">
-                        <h3>Portfolio<span>.</span></h3>
-                    </div>
-                    <div className="links">
-                        <a href="#home">Home</a>
-                        <a href="#aboutme">About</a>
-                        <a href="#project">Projects</a>
-                        <a href="#contact">Contact</a>
-                    </div>
-                </div>
-            </nav>
+            <a href="#about" className="skip-link">Skip to main content</a>
+
+
+            <Navbar />
+
+            {showScrollTop && (
+                <button
+                    className="back-to-top-btn"
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    title="Back to top"
+                >
+                    <ArrowUp size={20} />
+                </button>
+            )}
 
             {/* Hero Section */}
             <section id='home' className="hero container">
                 <div className='hero-content'>
-                    <div className='hero-text' data-aos="fade-right">
-                        <h1 className='myname'>Hi, I'm <span className="gradient-text">Chrishen Silva</span></h1>
-                        <h2 className='hero-role'>UI/UX Designer | Web Developer | Creator</h2>
+                    <div className='hero-text'>
+                        <div className="hero-title-wrapper">
+                            <h1 className='hero-title-line'>I CRAFT DIGITAL</h1>
+                            <h1 className='hero-title-line gradient-text'>EXPERIENCES</h1>
+                            <h1 className='hero-title-line'>THAT MATTER.</h1>
+                        </div>
 
-                        <div className='hero-buttons'>
-                            <a href='#aboutme' className='btn btn-primary'>About Me</a>
+                        <p className='hero-tagline'>
+                            Hi, I'm Chrishen Silva. A modern developer and designer focused on
+                            building products that are visually striking and technically seamless.
+                        </p>
+
+                        <div className='hero-cta-group'>
+                            <a href='#projects' className='btn btn-primary'>
+                                View My Work <ArrowRight size={16} style={{ marginLeft: '8px' }} />
+                            </a>
                             <button className='btn btn-secondary' onClick={() => {
                                 const link = document.createElement("a");
-                                link.href = "./CV(Chrishen).pdf";
+                                link.href = "./CV.pdf";
                                 link.download = "Chrishen_Resume.pdf";
                                 link.click();
-                            }}>Download Resume</button>
-                        </div>
-
-                        <div className='social-links'>
-                            <a href='https://web.facebook.com/chrishen.silva.2025' className="social-icon" target="_blank" rel="noreferrer">
-                                <img src={fb} alt="Facebook" />
-                            </a>
-                            <a href='https://www.linkedin.com/in/chrishen-silva-a42b491b2' className="social-icon" target="_blank" rel="noreferrer">
-                                <img src={linked} alt="LinkedIn" />
-                            </a>
-                            <a href='https://www.instagram.com/chrishen_silva' className="social-icon" target="_blank" rel="noreferrer">
-                                <img src={inster} alt="Instagram" />
-                            </a>
-                            <a href='https://github.com/chrishensilva' className="social-icon" target="_blank" rel="noreferrer">
-                                <img src={git} alt="GitHub" />
-                            </a>
+                            }}>
+                                <Download size={16} style={{ marginRight: '8px' }} /> Download CV
+                            </button>
                         </div>
                     </div>
 
-                    <div className='hero-image-wrapper' data-aos="fade-left">
-                        <div className='hero-img-box'>
-                            <img src={myimage} alt="Chrishen Silva" />
+                    <div className='hero-image-container'>
+                        <div className='hero-image-reveal'>
+                            <img src={myimage} alt="Chrishen Silva" loading="lazy" />
+                        </div>
+                        <div className="hero-badge">
+                            <span>AVAILABLE FOR WORK</span>
                         </div>
                     </div>
                 </div>
             </section>
-
-            {/* Tech Stack Horizontal Bar */}
-            <div className='tech-stack'>
-                <div className="container">
-                    <div className="tech-grid">
-                        <span className="tech-item">Java</span>
-                        <span className="tech-item">React</span>
-                        <span className="tech-item">Adobe Suite</span>
-                        <span className="tech-item">Blender</span>
-                        <span className="tech-item">HTML5/CSS3</span>
-                        <span className="tech-item">CyberSecurity</span>
-                        <span className="tech-item">Figma</span>
-                    </div>
-                </div>
-            </div>
 
             {/* About Section */}
-            <section id="aboutme" className="section container" data-aos="fade-up">
-                <h2>About <span className="gradient-text">Me</span></h2>
+            <section id="about" className="section container">
+                <div className="section-header">
+                    <span className="section-tag">ABOUT ME</span>
+                    <h2 className="section-title">Bridging the gap between<br />design and technology.</h2>
+                </div>
 
-                <div className='about-content'>
-                    <div className='about-text'>
-                        <p>
-                            Hey, I’m Chrishen, a passionate tech enthusiast from Sri Lanka with a deep love for creativity and innovation.
-                            I specialize in video editing, audio editing, motion graphics, and graphic design, with a growing interest and skill in 3D modeling, UI/UX design, and software & web development.
+                <div className="about-content">
+                    <div className="about-text-wrapper">
+                        <p className="about-main-text">
+                            I am a creative developer and designer based in Sri Lanka, specializing in building
+                            high-end digital experiences. With a background in UI/UX, 3D rendering, and
+                            frontend development, I craft products that are as functional as they are beautiful.
                         </p>
-                        <p>
-                            I enjoy bringing ideas to life—whether it’s crafting visually stunning videos, designing immersive user interfaces, creating unique soundscapes, or developing interactive digital experiences.
-                            I'm also diving deeper into the world of AI and machine learning, always eager to learn new technologies and stay ahead of the curve.
-                        </p>
-                    </div>
-
-                    <div className='feature-cards'>
-                        <Card
-                            heading="Creative Visual Storytelling"
-                            image={pic1}
-                            desc="Video editing, motion graphics, and graphic design are where I turn ideas into visually engaging stories. Whether it's a cinematic cut or an eye-catching animation, I blend creativity with precision."
-                        />
-                        <Card
-                            heading="Tech Meets Art"
-                            image={pic2}
-                            desc="I'm not just creative—I'm technical too. From building websites and apps to exploring AI and software development, I love fusing design with development to create smooth, interactive digital experiences."
-                        />
-                        <Card
-                            heading="Always Evolving"
-                            image={pic3}
-                            desc="I’m constantly learning—whether it’s leveling up in 3D modeling, diving into UI/UX, or experimenting with music production and AI tools. I'm committed to growth, always exploring new tools."
-                        />
                     </div>
                 </div>
             </section>
 
+            {/* Expertise & Skills Section */}
+            <Expertise />
+
             {/* Projects Section */}
-            <section id='project' className="section container">
-                <h2>My <span className="gradient-text">Projects</span></h2>
+            <section id="projects" className="section container">
+                <div className="section-header">
+                    <span className="section-tag">SELECTED WORKS</span>
+                    <h2 className="section-title">Case studies and<br />curated projects.</h2>
+                </div>
                 <ProjectsSection />
             </section>
 
+            {/* Testimonials Section 
+            <Testimonials />*/}
+
             {/* Contact Section */}
-            <section id='contact' className="section container" data-aos="fade-up">
-                <h2>Get In <span className="gradient-text">Touch</span></h2>
+            <section id="contact" className="section container">
+                <div className="section-header">
+                    <span className="section-tag">GET IN TOUCH</span>
+                    <h2 className="section-title">Let's craft something<br />extraordinary together.</h2>
+                </div>
 
-                <div className="contact-container">
-                    <div className="contact-text contact-cta">
-                        <p>
-                            Got a project in mind or just want to say hi? Feel free to reach out!
-                            I'm always open to new opportunities, collaborations, or a good tech chat. Let’s build something awesome together!
+                <div className="contact-wrapper">
+                    <div className="contact-info-v2">
+                        <p className="contact-description">
+                            Currently available for new projects and creative collaborations.
+                            Let's build a digital experience that stands out.
                         </p>
+
+                        <div className="direct-contact">
+                            <span className="contact-label-v2">EMAIL ME</span>
+                            <a href="mailto:Chrishensilva@gmail.com" className="contact-email-v2">
+                                Chrishensilva@gmail.com
+                            </a>
+                        </div>
                     </div>
 
-                    <div className='code-snippet-box'>
-                        <span className='code-line'><span className="code-keyword">const</span> contact = &#123;</span>
-                        <span className='code-line'>&nbsp;&nbsp;email: <span className="code-string">"chrishensilva@example.com"</span>,</span>
-                        <span className='code-line'>&nbsp;&nbsp;github: <span className="code-string">"@chrishensilva"</span>,</span>
-                        <span className='code-line'>&nbsp;&nbsp;message: <span className="code-string">"Let's work together!"</span></span>
-                        <span className='code-line'>&#125;;</span>
-                        <span className='code-line'><span className="code-keyword">return</span> <span className="code-string">"Hello, World!"</span>;</span>
+                    <div className="contact-form-column">
+                        <form className="contact-form-v2" onSubmit={(e) => e.preventDefault()}>
+                            <div className="form-group-v2">
+                                <input type="text" placeholder="YOUR NAME" required />
+                            </div>
+                            <div className="form-group-v2">
+                                <input type="email" placeholder="YOUR EMAIL" required />
+                            </div>
+                            <div className="form-group-v2">
+                                <textarea placeholder="PROJECT DETAILS" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" className="btn btn-primary btn-full">
+                                SEND MESSAGE <Send size={16} />
+                            </button>
+                        </form>
                     </div>
 
-                    <div className='social-grid'>
-                        <a href='https://web.facebook.com/chrishen.silva.2025' target='_blank' rel="noreferrer" className='social-card'>
-                            <img src={fb} alt="Facebook" />
-                            <span>Facebook</span>
-                        </a>
-                        <a href='https://www.linkedin.com/in/chrishen-silva-a42b491b2' target='_blank' rel="noreferrer" className='social-card'>
-                            <img src={linked} alt="LinkedIn" />
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href='https://www.instagram.com/chrishen_silva' target='_blank' rel="noreferrer" className='social-card'>
-                            <img src={inster} alt="Instagram" />
-                            <span>Instagram</span>
-                        </a>
-                        <a href='https://github.com/chrishensilva' target='_blank' rel="noreferrer" className='social-card'>
-                            <img src={git} alt="Github" />
-                            <span>Github</span>
-                        </a>
+                    <div className="social-links-column">
+                        <span className="contact-label-v2">FOLLOW ME</span>
+                        <div className="social-list-v2">
+                            <a href="https://github.com/Chrishensilva" target="_blank" rel="noreferrer" className="social-item-v2">
+                                GITHUB <ArrowRight size={16} />
+                            </a>
+                            <a href="https://www.linkedin.com/in/chrishen-silva-b34b6b251/" target="_blank" rel="noreferrer" className="social-item-v2">
+                                LINKEDIN <ArrowRight size={16} />
+                            </a>
+                            <a href="https://www.instagram.com/chrishen_silva/" target="_blank" rel="noreferrer" className="social-item-v2">
+                                INSTAGRAM <ArrowRight size={16} />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <footer>
-                <p>Chrishen Silva © 2025. All Rights Reserved.</p>
+            <footer className="footer-v2">
+                <div className="container footer-content">
+                    <p>DESIGNED & BUILT BY CHRISHEN SILVA</p>
+                    <p>© {new Date().getFullYear()}</p>
+                </div>
             </footer>
         </div>
     );

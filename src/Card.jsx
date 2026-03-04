@@ -1,12 +1,15 @@
-function Card(props) {
+function Card({ heading, image, desc }) {
     return (
-        <div className="card" data-aos="fade-up">
-            <div className="card-icon">
-                <img src={props.image} alt={props.heading} />
+        <div className="card-v2">
+            <div className="card-image-box">
+                <img src={image} alt={heading} loading="lazy" />
             </div>
-            <h3>{props.heading}</h3>
-            <p>{props.desc}</p>
+            <div className="card-content-v2">
+                <h3 className="card-heading-v2">{heading}</h3>
+                <p className="card-desc-v2">{desc}</p>
+            </div>
         </div>
     );
 }
+
 export default Card;

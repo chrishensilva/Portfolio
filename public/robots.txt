@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://chrishensilva.github.io/Portfolio/sitemap.xml

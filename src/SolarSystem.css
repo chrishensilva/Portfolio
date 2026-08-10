@@ -1,0 +1,401 @@
+/* ── Solar System Component Styles ── */
+
+:root {
+  --radius-inner: 175px;
+  --radius-mid: 285px;
+  --radius-outer: 395px;
+}
+
+/* Tablet Responsive Adjustments */
+@media (max-width: 768px) {
+  :root {
+    --radius-inner: 100px;
+    --radius-mid: 165px;
+    --radius-outer: 230px;
+  }
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 480px) {
+  :root {
+    --radius-inner: 70px;
+    --radius-mid: 115px;
+    --radius-outer: 160px;
+  }
+}
+
+/* ── Outer wrapper ── */
+.solar-system-outer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 940px;
+  height: 320px;
+  perspective: 1200px;
+  user-select: none;
+  overflow: visible;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .solar-system-outer {
+    height: 450px;
+  }
+}
+
+/* ── 3D Container ── */
+.solar-system-3d-container {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .solar-system-3d-container {
+    width: 940px;
+    height: 940px;
+  }
+}
+
+/* ── Sun Wrapper ── */
+.solar-system-center-sun {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .solar-system-center-sun {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+/* ── Sun Aura ── */
+.solar-system-sun-aura {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  filter: blur(12px);
+  z-index: 10;
+  background-color: rgba(200, 255, 0, 0.15); /* matching lime theme */
+}
+@media (min-width: 768px) {
+  .solar-system-sun-aura {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* ── Sun Core Logo ── */
+.solar-system-sun-logo {
+  width: 3.5rem; /* w-14 */
+  height: 3.5rem; /* h-14 */
+  border-radius: 50%;
+  border: 2px solid rgba(200, 255, 0, 0.4);
+  box-shadow: 0 0 30px rgba(200, 255, 0, 0.3);
+  z-index: 20;
+  background-color: #0B0B0D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem; /* p-2 */
+  position: relative;
+  pointer-events: auto;
+}
+@media (min-width: 768px) {
+  .solar-system-sun-logo {
+    width: 5rem; /* w-20 */
+    height: 5rem; /* h-20 */
+    padding: 0.75rem; /* p-3 */
+  }
+}
+
+.solar-system-sun-logo img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.solar-system-orbit-spin-icon {
+  width: 2rem; /* w-8 */
+  height: 2rem; /* h-8 */
+  color: #C8FF00;
+  animation: custom-spin-icon 10s linear infinite;
+}
+@keyframes custom-spin-icon {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ── Sun Accessory Dash Rings ── */
+.solar-system-dash-ring-1 {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 1px dashed rgba(200, 255, 0, 0.2);
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .solar-system-dash-ring-1 {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+.solar-system-dash-ring-2 {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 1px dashed rgba(200, 255, 0, 0.1);
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .solar-system-dash-ring-2 {
+    width: 185px;
+    height: 185px;
+  }
+}
+
+/* ── Cosmic Dust ── */
+.solar-system-dust {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ── Orbit Tracks ── */
+.solar-system-orbit-line {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.01), 0 0 25px rgba(255, 255, 255, 0.01);
+}
+
+/* ── Orbit Node Wrapper ── */
+.solar-system-orbit-node-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* ── Laser Beam line ── */
+.solar-system-laser-beam {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  height: 1.5px;
+  transform-origin: right center;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+/* ── Planet Label ── */
+.solar-system-planet-label {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+}
+@media (min-width: 768px) {
+  .solar-system-planet-label {
+    font-size: 13px;
+  }
+}
+
+/* ── Keyframe Animations ── */
+
+/* Orbit revolutions */
+@keyframes custom-orbitMove {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(0deg) translateX(var(--orbit-radius));
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateZ(-360deg) translateX(var(--orbit-radius));
+  }
+}
+
+/* Billboard counter-rotation */
+@keyframes custom-billboardCancel {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(0deg) rotateY(10deg) rotateX(-65deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateZ(360deg) rotateY(10deg) rotateX(-65deg);
+  }
+}
+
+/* Sun glow pulsations */
+@keyframes custom-sun-pulse {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+/* Sun ring accessory speeds */
+@keyframes custom-spin-clockwise {
+  0% { transform: rotateX(65deg) rotateY(-10deg) rotateZ(0deg); }
+  100% { transform: rotateX(65deg) rotateY(-10deg) rotateZ(360deg); }
+}
+@keyframes custom-spin-counter {
+  0% { transform: rotateX(65deg) rotateY(-10deg) rotateZ(0deg); }
+  100% { transform: rotateX(65deg) rotateY(-10deg) rotateZ(-360deg); }
+}
+
+.animate-custom-orbit {
+  animation: custom-orbitMove var(--orbit-duration) linear infinite;
+  animation-play-state: var(--orbit-play-state);
+}
+.animate-custom-billboard {
+  animation: custom-billboardCancel var(--orbit-duration) linear infinite;
+  animation-play-state: var(--orbit-play-state);
+}
+.animate-custom-sun-pulse {
+  animation: custom-sun-pulse 4s ease-in-out infinite alternate;
+}
+.animate-custom-spin-cw {
+  animation: custom-spin-clockwise 20s linear infinite;
+}
+.animate-custom-spin-ccw {
+  animation: custom-spin-counter 30s linear infinite;
+}
+
+/* Planet logo cards base styles */
+.orbit-logo-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.45rem 0.95rem;
+  background: rgba(11, 11, 13, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: border-color 0.3s, color 0.3s, background 0.3s, box-shadow 0.3s, scale 0.3s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ── Extended Skills Directory ── */
+.extended-skills-section {
+  margin-top: 6rem;
+  width: 100%;
+}
+
+.extended-skills-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.extended-skills-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  margin-top: 0.5rem;
+}
+
+.extended-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .extended-skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .extended-skills-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.skills-category-card {
+  background: rgba(18, 18, 26, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills-category-card:hover {
+  border-color: rgba(200, 255, 0, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.category-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.category-skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.skill-badge {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 550;
+  color: var(--color-text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  cursor: default;
+}
+
+.skills-category-card:hover .skill-badge {
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+.skill-badge:hover {
+  background: rgba(200, 255, 0, 0.1);
+  border-color: var(--color-accent);
+  color: var(--color-accent) !important;
+  box-shadow: 0 0 15px rgba(200, 255, 0, 0.15);
+}

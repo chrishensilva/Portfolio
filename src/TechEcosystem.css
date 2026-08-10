@@ -1,0 +1,348 @@
+/* ── Tech Ecosystem ── */
+.eco-section {
+  margin-top: 6rem;
+  width: 100%;
+}
+
+.eco-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.eco-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  margin-top: 0.5rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.eco-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--color-accent);
+}
+
+.eco-intro-pill {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 100px;
+  padding: 0.75rem 2rem;
+  text-align: center;
+}
+
+.eco-intro-text {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.eco-tabs-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.eco-tab-btn {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.6rem 1.5rem;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.eco-tab-btn:hover {
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.eco-tab-btn.active {
+  background: rgba(200, 255, 0, 0.1);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  box-shadow: 0 0 20px rgba(200, 255, 0, 0.1);
+}
+
+/* Legend */
+.eco-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-secondary);
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.legend-dot.proficient {
+  background-color: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
+}
+
+.legend-dot.learning {
+  background-color: #00E5FF;
+  box-shadow: 0 0 8px #00E5FF;
+}
+
+/* Layout Grid */
+.eco-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .eco-layout-grid {
+    grid-template-columns: 1.2fr 2fr;
+  }
+}
+
+/* Left Card */
+.eco-left-card {
+  background: linear-gradient(135deg, rgba(20, 20, 25, 0.7) 0%, rgba(10, 10, 15, 0.7) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 3rem;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.eco-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.eco-card-icon-wrapper {
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  background: rgba(200, 255, 0, 0.1);
+  border: 1px solid rgba(200, 255, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+}
+
+.eco-card-title-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.eco-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.eco-card-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+.eco-card-desc {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.eco-card-competencies {
+  margin-bottom: 3rem;
+}
+
+.competencies-title {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.competencies-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.competency-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+}
+
+.competency-item svg {
+  color: var(--color-accent);
+}
+
+.eco-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 2rem;
+}
+
+.eco-card-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.verified-badge {
+  background: rgba(200, 255, 0, 0.1);
+  border: 1px solid rgba(200, 255, 0, 0.2);
+  color: var(--color-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  text-transform: uppercase;
+}
+
+/* Right Side Grid */
+.eco-right-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .eco-right-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.eco-skill-card {
+  background: rgba(18, 18, 26, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.eco-skill-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+  background: rgba(18, 18, 26, 0.6);
+}
+
+.eco-skill-card.active-learning:hover {
+  border-color: rgba(0, 229, 255, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 229, 255, 0.05);
+}
+
+.eco-skill-card.active-proficient:hover {
+  border-color: rgba(200, 255, 0, 0.4);
+  box-shadow: 0 4px 20px rgba(200, 255, 0, 0.05);
+}
+
+.eco-skill-name {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* Circular Progress SVG */
+.circular-progress {
+  transform: rotate(-90deg);
+  width: 44px;
+  height: 44px;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.04);
+  stroke-width: 3.5;
+}
+
+.circle-fill {
+  fill: none;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s ease;
+}
+
+.circle-fill.proficient {
+  stroke: var(--color-accent);
+}
+
+.circle-fill.learning {
+  stroke: #00E5FF;
+}
+
+.circle-text {
+  fill: var(--color-text-primary);
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 800;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  transform: rotate(90deg);
+  transform-origin: center;
+}

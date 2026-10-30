@@ -4,6 +4,12 @@
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .eco-section {
+    margin-top: 3.5rem;
+  }
+}
+
 .eco-header {
   text-align: center;
   margin-bottom: 2rem;
@@ -92,6 +98,15 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .eco-legend {
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.7rem;
+  }
 }
 
 .legend-item {
@@ -139,6 +154,13 @@
   padding: 3rem;
   position: relative;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .eco-left-card {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
 }
 
 .eco-card-header {

@@ -365,7 +365,7 @@ const Education = () => {
                                     ))}
                                 </h3>
                                 <p className="cert-org">{cert.org}</p>
-                                
+
                                 {cert.description && (
                                     <p className="cert-description">{cert.description}</p>
                                 )}

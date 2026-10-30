@@ -44,6 +44,12 @@
   }
 }
 
+@media (max-width: 480px) {
+  .solar-system-outer {
+    height: 260px;
+  }
+}
+
 /* ── 3D Container ── */
 .solar-system-3d-container {
   position: absolute;
@@ -312,9 +318,21 @@
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .extended-skills-section {
+    margin-top: 3rem;
+  }
+}
+
 .extended-skills-header {
   text-align: center;
   margin-bottom: 3.5rem;
+}
+
+@media (max-width: 768px) {
+  .extended-skills-header {
+    margin-bottom: 2rem;
+  }
 }
 
 .extended-skills-title {

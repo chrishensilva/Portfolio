@@ -55,7 +55,19 @@ const Navbar = () => {
                 {/* Desktop Links */}
                 <div className="links desktop-only">
                     {navLinks.map((link) => (
-                        <a key={link.name} href={link.href} className="nav-link">
+                        <a 
+                            key={link.name} 
+                            href={link.href} 
+                            className="nav-link"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                const target = document.querySelector(link.href);
+                                if (target) {
+                                    const y = target.getBoundingClientRect().top + window.scrollY;
+                                    window.scrollTo({ top: y, behavior: 'smooth' });
+                                }
+                            }}
+                        >
                             {link.name}
                         </a>
                     ))}
@@ -80,7 +92,15 @@ const Navbar = () => {
                             key={link.name}
                             href={link.href}
                             className="mobile-link"
-                            onClick={() => setIsOpen(false)}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                setIsOpen(false);
+                                const target = document.querySelector(link.href);
+                                if (target) {
+                                    const y = target.getBoundingClientRect().top + window.scrollY;
+                                    window.scrollTo({ top: y, behavior: 'smooth' });
+                                }
+                            }}
                         >
                             {link.name}
                         </a>

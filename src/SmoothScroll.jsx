@@ -19,7 +19,8 @@ function SmoothScroll({ children }) {
 
     useEffect(() => {
         const el = wrapperRef.current;
-        if (!el) return;
+        // Disable on mobile/tablet devices for better native touch performance
+        if (!el || window.innerWidth < 1024) return;
 
         /* ── 1. Sync document scroll height to real content height ── */
         const syncHeight = () => {
@@ -81,18 +82,20 @@ function SmoothScroll({ children }) {
         };
     }, []);
 
+    const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
+
     return (
-        <ScrollerContext.Provider value={wrapperRef}>
+        <ScrollerContext.Provider value={isDesktop ? wrapperRef : null}>
             <div
                 ref={wrapperRef}
-                style={{
+                style={isDesktop ? {
                     position: 'fixed',
                     top: 0,
                     left: 0,
                     width: '100%',
                     overflow: 'hidden',
                     willChange: 'transform',
-                }}
+                } : {}}
             >
                 {children}
             </div>

@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Download, Github, Linkedin, Instagram, ArrowUp, Send } from 'lucide-react';
+import { ArrowRight, Download, Github, Linkedin, Instagram, Send } from 'lucide-react';
 
 import cutoutImage from './assets/person.png';
-import Navbar from './Navbar.jsx';
 import ProjectsSection from './ProjectsSection.jsx';
 import Expertise from './Expertise.jsx';
 import Education from './Education.jsx';
 import Testimonials from './Testimonials.jsx';
 import FluidBackground from './FluidBackground.jsx';
+import { useScroller } from './SmoothScroll.jsx';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -18,15 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 function Home() {
-    const [showScrollTop, setShowScrollTop] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setShowScrollTop(window.scrollY > 400);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    const scrollerRef = useScroller();
     useEffect(() => {
         const ctx = gsap.context(() => {
             // Hero Entrance
@@ -52,20 +44,10 @@ function Home() {
                     opacity: 0,
                     duration: 1.4,
                     ease: 'power3.out',
-                }, '-=1.0')
-                .from('.hero-footer-left', {
-                    y: 30,
-                    opacity: 0,
-                    duration: 0.9,
-                }, '-=0.9')
-                .from('.hero-footer-right', {
-                    y: 30,
-                    opacity: 0,
-                    duration: 0.9,
-                }, '-=0.7');
+                }, '-=1.0');
 
             // Section Reveals
-            const sections = ['#about', '#expertise', '#education', '#projects', '#testimonials', '#contact'];
+            const sections = ['#about', '#expertise', '#education', '#projects', '#contact'];
 
             sections.forEach((selector) => {
                 gsap.fromTo(selector,
@@ -73,6 +55,7 @@ function Home() {
                     {
                         scrollTrigger: {
                             trigger: selector,
+                            scroller: scrollerRef?.current || undefined,
                             start: 'top 80%',
                             toggleActions: 'play none none none'
                         },
@@ -115,28 +98,15 @@ function Home() {
         });
 
         return () => ctx.revert();
-    }, []);
+    }, [scrollerRef]);
 
     return (
         <div className="app-wrapper">
             <a href="#about" className="skip-link">Skip to main content</a>
 
-
-            <Navbar />
-
-            {showScrollTop && (
-                <button
-                    className="back-to-top-btn"
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    title="Back to top"
-                >
-                    <ArrowUp size={20} />
-                </button>
-            )}
-
             {/* Hero Section — Editorial Poster Layout */}
             <section id='home' className="hero-editorial">
-                <FluidBackground />
+                {/*<FluidBackground />*/}
 
                 {/* Top-right: Date / Name metadata */}
                 <div className="hero-editorial-header">

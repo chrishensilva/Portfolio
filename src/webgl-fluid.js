@@ -1,4 +1,4 @@
-
+const ga = window.ga || function() {};
 
 export default function initFluid(canvas) {
 resizeCanvas();
